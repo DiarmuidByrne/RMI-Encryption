@@ -97,11 +97,14 @@ private char[] key; //Store the cypher key as a char array for convenience
 	 */
 	public String doCypher(char[] text, boolean encrypt) {
 		StringBuffer buffer = new StringBuffer();
+		int j = 0;
 		for (int i = 0; i < text.length; i++) {
+			
 			if (text[i] < 'A' || text[i] > 'Z') continue;
 			
-			int j = 0;
-			if (i < key.length) j = i;
+			//j = 0;
+			
+			if (j >= key.length) j = 0; //or   j = j%key.length if that's your thing
 			
 			if(encrypt){
 				buffer.append(getEncryptedCharacter(key[j], text[i]));
@@ -119,8 +122,8 @@ private char[] key; //Store the cypher key as a char array for convenience
 	}
 	
 	public static void main(String[] args) {
-		Vigenere v = new Vigenere("JAVAP");
-		String cypherTxt = v.doCypher("ANTIDISESTABLISHMENTARIANISM", true);
+		Vigenere v = new Vigenere("poops");
+		String cypherTxt = v.doCypher("WHATSGOINGON", true);
 		System.out.println(cypherTxt);
 		
 		String plainTxt = v.doCypher(cypherTxt, false);

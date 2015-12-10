@@ -36,10 +36,8 @@ public class KeyEnumerator {
 				counter++;
 				//System.out.println("key:" + new String(key));
 				String result = new Vigenere(new String(key)).doCypher(cypherText, false);
-				
 				//System.out.println("result: " + result);
 				double score = map.getScore(result);
-				
 				if(score > bestScore){
 					bestKey = new String(key);
 					bestScore = score;
@@ -56,6 +54,6 @@ public class KeyEnumerator {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		new KeyEnumerator().crackCypher("JSDACFRON", 5);
+		new KeyEnumerator().crackCypher("LVOIKVCWCYDB", 5);
 	}
 }

@@ -14,18 +14,20 @@ public class QuadgramMap {
 	public double getScore(String text){
 		double totalScore = 0.00f;
 		double score = 0.00f;
+		
 		for (int i = 0; i < text.length(); i+=4) {
 			
 			if (i + 4 > text.length()) break;
 			
 			String next = text.substring(i, i+4);
+			if(text == "EDPIDMIASTERHISLCANTEHEANMII") {
+				System.out.println("Score:" + score);					
+			}
+			
 			if (map.get(next) != null){
 				double frequency = (double)map.get(next);
-				double total = (double)map.size();
-				score = (double) ((Math.log10(frequency))/total);
-				//System.out.println("score: " + score);
-				//System.out.println("Freq: " + frequency + "   Total: " + total);
-				totalScore+= score;
+				score = Math.log10(frequency);
+				totalScore += score;
 			}
 		}
 		return totalScore;
