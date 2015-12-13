@@ -35,7 +35,7 @@ public class VigenereHandler {
 		try
 		{
 			// Import Vigenere jar to receive remote object call
-			VigenereService vs = (VigenereService) Naming.lookup("rmi://192.168.1.10:1099/cypher-service");
+			VigenereService vs = (VigenereService) Naming.lookup("cypher-service"); //rmi://192.168.1.10:1099/
 			
 			VigenereBreaker vb = vs.getVigenere();
 			result = vb.decrypt(req.getCypherText(),  req.getMaxKeySize());

@@ -11,12 +11,14 @@
 			<form bgcolor="white" method="POST" action="doProcess">
 				<fieldset>
 					<legend><h3>Cypher Details</h3></legend>
-				
-					<b>Maximum Vigenere Key Length: <input name="frmMaxKeyLength" type="text" size="2" value="7">
+					
+					<b>Servant IP (Leave blank if run locally): <input name="frmServantIP" type="text" size="14">
+					<p/>				
+					<b>Maximum Vigenere Key Length: <input name="frmMaxKeyLength" type="text" size="2" value="5">
 					<p/>
 
 					<b>Enter Cypher-Text:</b><br>
-					<textarea name="frmCypherText" rows="10" cols="100"  wrap="soft"></textarea>	
+					<textarea name="frmCypherText" rows="10" cols="100" value="VRPEKRNVDJSFWFUCYHYNWRRWEQNQXPCGEEGKVXAUCHEZWWA"  wrap="soft"></textarea>	
 					<p/>
 
 

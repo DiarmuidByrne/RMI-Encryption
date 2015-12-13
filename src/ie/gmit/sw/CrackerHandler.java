@@ -27,6 +27,7 @@ public class CrackerHandler extends HttpServlet
 			int maxKeyLength = Integer.parseInt(req.getParameter("frmMaxKeyLength"));
 			String cypherText = req.getParameter("frmCypherText");
 			String taskNumber = req.getParameter("frmStatus");
+			String hostIP = req.getParameter("frmServantIP");
 			String result = "Please wait...";
 			String resultCheck = "Please wait...";
 			boolean finished = false;
@@ -39,16 +40,22 @@ public class CrackerHandler extends HttpServlet
 				//Add job to in-queue
 				taskNumber = new String("T" + jobNumber);
 				jobNumber++;
-				
-				Request newReq = new Request(cypherText, maxKeyLength, jobNumber);			
+
+//				if(hostIP != null) { 
+//					Request newReq = new Request(cypherText, maxKeyLength, jobNumber, hostIP);
+//					vrm.add(newReq);
+//				} else {
+				Request newReq = new Request(cypherText, maxKeyLength, jobNumber);		
 				vrm.add(newReq);
+//				}
 				
 			} else {
 	
 				try {
-					result = vrm.getResult(jobNumber);
+					result = vrm.getResult(Integer.parseInt(taskNumber.substring(1)));
 					
 					if(result != null && !result.equals(cypherText)) {
+						System.out.println("FINISHED LADS");
 						resultCheck = result;
 						finished = true;
 						
@@ -59,16 +66,16 @@ public class CrackerHandler extends HttpServlet
 				
 			}
 			
-	
 			//Check out-queue for finished job
 			out.print("<H1>Processing request for Job#: " + taskNumber + "</H1>");
+			out.print("JOBNUMBER: "  + taskNumber.substring(1));
 			out.print("<div id=\"r\"></div>");
-			
 			
 			out.print("RMI Server is located at " + remoteHost);
 			out.print("<P>Maximum Key Length: " + maxKeyLength);		
 			out.print("<P>CypherText: " + cypherText);
 			out.print("<P>Decrypted: " + resultCheck);
+			out.print("<P>HOST IP: " + hostIP);
 			
 			out.print("<form name=\"frmCracker\">");
 			out.print("<input name=\"frmMaxKeyLength\" type=\"hidden\" value=\"" + maxKeyLength + "\">");
