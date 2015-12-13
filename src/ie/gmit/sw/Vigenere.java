@@ -123,7 +123,7 @@ private char[] key; //Store the cypher key as a char array for convenience
 	
 	public static void main(String[] args) {
 		Vigenere v = new Vigenere("JAVAP");
-		String cypherTxt = v.doCypher("HELLODARKNESSMYOLDFRIENDIVECOMETOCHATWITHYOUAGAIN", true);
+		String cypherTxt = v.doCypher("HELLODARKNESSMYOLDFRIENDICAMETOTALKWITHYOUAGAIN", true);
 		System.out.println(cypherTxt);
 		
 

@@ -7,7 +7,7 @@ public class KeyEnumerator {
 	private String bestKey;
 	
 	public KeyEnumerator() throws Exception {
-		map = new QuadgramMap("C:/Users/diarb/workspace/RMIEncryption/Tolstoy.txt");
+		map = new QuadgramMap("./Tolstoy.txt");
 	}
 	
 	private char[] getNextKey(char[] key){
@@ -53,9 +53,5 @@ public class KeyEnumerator {
 		System.out.println(bestKey);
 		
 		return yahoo;
-	}
-	
-	public static void main(String[] args) throws Exception {
-		new KeyEnumerator().crackCypher("QEGLDMAMKCNSNMNXLYFGREIDXEEXOBNTJCWJTRIIQYJUPPADN", 5);
 	}
 }
